@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+  tasks:
+        #---------------------------------
+    - name: disable services
+      service:
+        state: stopped
+        enabled: no
+        name: "{{ item }}"
+      with_items:
+        - alsa-utils
+        - anacron
+        - apache-htcacheclean
+        - apport
+        - avahi-daemon
+        - bluetooth
+        - console-setup.sh
+        - cups-browsed
+        - hwclock.sh
+        - kerneloops
+        - keyboard-setup.sh
+        - lightdm
+        - openvpn
+        - plymouth
+        - pppd-dns
+        - pulseaudio-enable-autospawn
+        - rsync
+        - saned
+        - speech-dispatcher
+        - spice-vdagent
+        - uuidd
+        - whoopsie
+        - x11-common
+
+        #---------------------------------
+    - name: enable services
+      service:
+        state: started
+        enabled: yes
+        name: "{{ item }}"
+      with_items:
+        - gdm3

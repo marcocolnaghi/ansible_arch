@@ -1,0 +1,98 @@
+---
+- hosts: localhost
+  tasks:
+        #---------------------------------
+    - name: backports repo
+      apt_repository:
+        repo: 'deb http://archive.ubuntu.com/ubuntu groovy-backports main universe multiverse restricted'
+        filename: 'backports'
+        state: present
+
+    - name: budgie-backports repo
+      apt_repository:
+        repo: 'ppa:ubuntubudgie/backports'
+        filename: 'budgie-backports'
+        state: present
+
+    - name: google key
+      apt_key:
+        url: 'https://dl.google.com/linux/linux_signing_key.pub'
+        state: present
+    - name: google repo
+      apt_repository:
+        repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+        state: present
+        filename: 'google-chrome'
+
+    - name: teams key
+      apt_key:
+        url: 'https://packages.microsoft.com/keys/microsoft.asc'
+        state: present
+    - name: teams repo
+      apt_repository:
+        repo: 'deb https://packages.microsoft.com/repos/ms-teams stable main'
+        filename: 'teams'
+        state: present
+
+#    - name: xxx key
+#      apt_key:
+#        url: 'xxxurl'
+#        state: present
+#    - name: xxx repo
+#      apt_repository:
+#        repo: 'xxxrepo'
+#        filename: 'xxxrepo'
+#        state: present
+
+        # -----------------------------------
+    - name: Update apt-get repo and cache
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+        #        autoremove: yes
+        #        autoclean: yes
+
+        # -----------------------------------
+    - name: remove packages
+      apt:
+        state: absent
+        name:
+         - lightdm
+
+        # -----------------------------------
+    - name: install packages
+      apt:
+        install_recommends: true
+        state: present
+        name:
+         - budgie-calendar-applet
+         - budgie-desktop-environment
+         - budgie-kangaroo-applet
+         - budgie-pixel-saver-applet
+         - budgie-previews
+         - budgie-previews-applet
+         - budgie-screenshot-applet
+         - budgie-sys-monitor-applet
+         - gnome-tweaks
+         - google-chrome-stable
+         - mcmojave-circle
+         - oxygen-cursor-theme
+         - pdftk
+         - teams=1.3.00.30857
+         - teamviewer
+         - thunderbird
+         - whitesur-gtk-theme
+
+    - name: install without suggest
+      apt:
+        install_recommends: false
+        state: present
+        name:
+         - deepin-screenshot
+
+        #---------------------------------
+    - name: install snap packages
+      snap:
+        classic: yes
+        state: present
+        name:
+         - slack
+
