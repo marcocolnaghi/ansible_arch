@@ -1,5 +1,8 @@
 ---
 - hosts: localhost
+  vars:
+    plbook: system
+
   tasks:
         #---------------------------------
     - name: apt-fast repository
@@ -21,12 +24,12 @@
 #    - name: xxx key
 #      apt_key:
 #        url: 'xxxurl'
-#        state: present
+#        state: latest
 #    - name: xxx repo
 #      apt_repository:
 #        repo: 'xxxrepo'
 #        filename: 'xxxrepo'
-#        state: present
+#        state: latest
 
         # -----------------------------------
     - name: Update apt-get repo and cache
@@ -34,11 +37,15 @@
         #        autoremove: yes
         #        autoclean: yes
 
-        # -----------------------------------
+    # -----------------------------------
+    - name: dpk-hist-before
+      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_before_{{ plbook }}.txt"
+
+    # -----------------------------------
     - name: install packages
       apt:
         install_recommends: true
-        state: present
+        state: latest
         name:
          - ansible-lint
          - apt-fast
@@ -60,6 +67,12 @@
          - timeshift
          - traceroute
          - usb-creator-gtk
-         - vim-gtk
+         - vim-gtk3
          - virtualbox
          - whois
+         - xgrep
+         - xmlstarlet
+    
+    # -----------------------------------
+    - name: dpk-hist-after
+      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_after_{{ plbook }}.txt"

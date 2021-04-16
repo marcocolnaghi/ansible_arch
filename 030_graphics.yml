@@ -1,5 +1,8 @@
 ---
 - hosts: localhost
+  vars:
+    plbook: graphics
+
   tasks:
     # -----------------------------------
     - name: Update apt-get repo and cache
@@ -8,10 +11,14 @@
       #        autoclean: yes
 
     # -----------------------------------
+    - name: dpk-hist-before
+      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_before_{{ plbook }}.txt"
+
+    # -----------------------------------
     - name: install packages
       apt:
         install_recommends: true
-        state: present
+        state: latest
         name:
           - exiftran
           - exiv2
@@ -19,3 +26,7 @@
           - gimp
           - imagemagick
           - rawtherapee
+
+    # -----------------------------------
+    - name: dpk-hist-after
+      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_after_{{ plbook }}.txt"
