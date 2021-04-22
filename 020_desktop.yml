@@ -58,11 +58,11 @@
         #        autoclean: yes
 
         # -----------------------------------
-    - name: remove packages
-      apt:
-        state: absent
-        name:
-         - lightdm
+    # - name: remove packages
+    #   apt:
+    #     state: absent
+    #     name:
+    #      - lightdm
 
         # -----------------------------------
     - name: install packages

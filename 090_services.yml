@@ -19,7 +19,7 @@
         - hwclock.sh
         - kerneloops
         - keyboard-setup.sh
-        - lightdm
+        # - lightdm
         - openvpn
         - plymouth
         - pppd-dns
