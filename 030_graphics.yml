@@ -20,10 +20,13 @@
         install_recommends: true
         state: latest
         name:
+          - enblend
+          - enfuse
           - exiftran
           - exiv2
           - geeqie
           - gimp
+          - hugin
           - imagemagick
           - rawtherapee
 

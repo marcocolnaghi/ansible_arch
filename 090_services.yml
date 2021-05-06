@@ -39,4 +39,5 @@
         enabled: yes
         name: "{{ item }}"
       with_items:
-        - gdm3
+        - ligthdm
+        #        - gdm3

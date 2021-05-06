@@ -38,6 +38,7 @@
         state: latest
         name:
          - code
+         - gambas3
 
     # -----------------------------------
     - name: dpk-hist-after

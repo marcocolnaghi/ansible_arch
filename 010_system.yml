@@ -5,11 +5,11 @@
 
   tasks:
         #---------------------------------
-    - name: apt-fast repository
-      apt_repository:
-        repo: 'ppa:apt-fast/stable'
-        filename: 'apt-fast'
-        state: present
+#    - name: apt-fast repository
+#     apt_repository:
+#       repo: 'ppa:apt-fast/stable'
+#       filename: 'apt-fast'
+#       state: present
 
     - name: teamviewer key
       apt_key:
@@ -48,16 +48,22 @@
         state: latest
         name:
          - ansible-lint
-         - apt-fast
+#         - apt-fast
          - apt-xapian-index
+         - bpytop
          - dconf-editor
          - dwww
+         - faketime
+#         - google-drive-ocamlfuse
          - gparted
          - grsync
+#         - grubcustomizer
          - iotop
          - linssid
          - linux-image-lowlatency
+         - git
          - mc
+         - net-tools
          - openfortivpn
          - preload
          - remmina
