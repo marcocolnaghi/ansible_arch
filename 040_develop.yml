@@ -4,15 +4,6 @@
     plbook: develop
 
   tasks:
-    - name: visualstudio code key
-      apt_key:
-        url: 'https://packages.microsoft.com/keys/microsoft.asc'
-        state: present
-    - name: visualstudio code repo
-      apt_repository:
-        repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
-        state: present
-        filename: 'visualstudio-code'
 
 #    - name: xxx key
 #      apt_key:
@@ -39,7 +30,14 @@
         name:
          - code
          - gambas3
+         - gitg
 
     # -----------------------------------
     - name: dpk-hist-after
       shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_after_{{ plbook }}.txt"
+
+# Install a snap with classic confinement
+    - name: Install "codium" with option --classic
+      community.general.snap:
+        name: codium
+        classic: yes

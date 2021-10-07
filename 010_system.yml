@@ -50,24 +50,34 @@
          - ansible-lint
 #         - apt-fast
          - apt-xapian-index
+         - arp-scan
          - bpytop
          - dconf-editor
          - dwww
          - faketime
 #         - google-drive-ocamlfuse
+	 - git
+         - gitg
          - gparted
          - grsync
 #         - grubcustomizer
          - iotop
+         - libjt400-java
          - linssid
-         - linux-image-lowlatency
+#         - linux-image-lowlatency
          - git
          - mc
+         - neovim
          - net-tools
          - openfortivpn
          - preload
+         - qemu-system-gui
+         - qemu-system-x86
+         - qemu-utils
          - remmina
          - rename
+         - seahorse
+         - stacer
          - synaptic
          - teamviewer
          - timeshift
@@ -78,6 +88,7 @@
          - whois
          - xgrep
          - xmlstarlet
+         - zsh
     
     # -----------------------------------
     - name: dpk-hist-after

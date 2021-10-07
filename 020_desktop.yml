@@ -78,6 +78,7 @@
          - budgie-previews-applet
          - budgie-screenshot-applet
          - budgie-sys-monitor-applet
+         - cherrytree
          - gnome-tweaks
          - google-chrome-stable
          - libreoffice
@@ -88,6 +89,7 @@
          - teamviewer
          - thunderbird
          - variety
+         - vlc
          - whitesur-gtk-theme
 
 #         - teams=1.3.00.30857
