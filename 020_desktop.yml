@@ -4,124 +4,29 @@
     plbook: desktop
 
   tasks:
-        #---------------------------------
-    # - name: backports repo
-    #   apt_repository:
-    #     repo: 'deb http://archive.ubuntu.com/ubuntu groovy-backports main universe multiverse restricted'
-    #     filename: 'backports'
-    #     state: present
-
-    - name: budgie-backports repo
-      apt_repository:
-        repo: 'ppa:ubuntubudgie/backports'
-        filename: 'budgie-backports'
-        state: present
-
-    - name: google key
-      apt_key:
-        url: 'https://dl.google.com/linux/linux_signing_key.pub'
-        state: present
-    - name: google repo
-      apt_repository:
-        repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
-        state: present
-        filename: 'google-chrome'
-
-    - name: teams key
-      apt_key:
-        url: 'https://packages.microsoft.com/keys/microsoft.asc'
-        state: present        
-    - name: teams repo
-      apt_repository:
-        repo: 'deb https://packages.microsoft.com/repos/ms-teams stable main'
-        filename: 'teams'
-        state: present
-
-#    - name: xxx key
-#      apt_key:
-#        url: 'xxxurl'
-#        state: latest
-#    - name: xxx repo
-#      apt_repository:
-#        repo: 'xxxrepo'
-#        filename: 'xxxrepo'
-#        state: latest
-
     # -----------------------------------
-    - name: dpk-hist-before
-      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_before_{{ plbook }}.txt"
-
-        # -----------------------------------
-    - name: Update apt-get repo and cache
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
-        #        autoremove: yes
-        #        autoclean: yes
-
-        # -----------------------------------
-    # - name: remove packages
-    #   apt:
-    #     state: absent
-    #     name:
-    #      - lightdm
-
-        # -----------------------------------
     - name: install packages
-      apt:
-        install_recommends: true
-        state: latest
-        name:
-         - budgie-calendar-applet
-         - budgie-desktop-environment
-         - budgie-kangaroo-applet
-         - budgie-pixel-saver-applet
-         - budgie-previews
-         - budgie-previews-applet
-         - budgie-screenshot-applet
-         - budgie-sys-monitor-applet
-         - cherrytree
-         - gnome-tweaks
-         - google-chrome-stable
-         - libreoffice
-         - mcmojave-circle
-         - oxygen-cursor-theme
-         - pdftk
-         - teams
-         - teamviewer
-         - thunderbird
-         - variety
-         - vlc
-         - whitesur-gtk-theme
-
-#         - teams=1.3.00.30857
-
-    - name: install without suggest
-      apt:
-        install_recommends: false
-        state: latest
-        name:
-         - deepin-screenshot
-
-    # -----------------------------------
-    - name: dpk-hist-after
-      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_after_{{ plbook }}.txt"
-
-
-    # -----------------------------------
-    - name: snap-hist-before
-      shell: "snap list >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_snap_before_{{ plbook }}.txt"
-
-    # ---------------------------------
-    - name: install snap packages
-      snap:
-        classic: yes
+      community.general.pacman:
+        # install_recommends: true
         state: present
         name:
-         - slack
-
-    # -----------------------------------
-    - name: snap-hist-after
-      shell: "snap list >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_snap_after_{{ plbook }}.txt"
-
-
-
-
+          - arcolinux-teamviewer
+          - budgie-screensaver  
+          - cherrytree
+          - geeqie
+          - google-chrome
+#         - kwalletmanager
+#         - latte-dock
+          - libreoffice-still
+          - megasync-bin
+          - minder
+          - nemo
+          - nemo-fileroller 
+          - nemo-preview
+          - pdftk
+          - teams
+          - slack-desktop
+#         - thunderbird
+          - variety
+          - vlc
+          - deepin-screenshot

@@ -4,92 +4,49 @@
     plbook: system
 
   tasks:
-        #---------------------------------
-#    - name: apt-fast repository
-#     apt_repository:
-#       repo: 'ppa:apt-fast/stable'
-#       filename: 'apt-fast'
-#       state: present
-
-    - name: teamviewer key
-      apt_key:
-        url: 'https://download.teamviewer.com/download/linux/signature/TeamViewer2017.asc'
-        state: present
-    - name: teamviewer repo
-      apt_repository:
-        repo: 'deb http://linux.teamviewer.com/deb stable main'
-        filename: 'teamviewer'
-        state: present
-
-#    - name: xxx key
-#      apt_key:
-#        url: 'xxxurl'
-#        state: latest
-#    - name: xxx repo
-#      apt_repository:
-#        repo: 'xxxrepo'
-#        filename: 'xxxrepo'
-#        state: latest
-
-        # -----------------------------------
-    - name: Update apt-get repo and cache
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
-        #        autoremove: yes
-        #        autoclean: yes
-
-    # -----------------------------------
-    - name: dpk-hist-before
-      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_before_{{ plbook }}.txt"
-
     # -----------------------------------
     - name: install packages
-      apt:
-        install_recommends: true
-        state: latest
+      community.general.pacman:
+      # install_recommends: true
+        state: present
         name:
-         - ansible-lint
-#         - apt-fast
-         - apt-xapian-index
-         - arp-scan
-         - bpytop
-         - dconf-editor
-         - dwww
-         - faketime
-#         - google-drive-ocamlfuse
-	 - git
-         - gitg
-         - gparted
-         - grsync
-#         - grubcustomizer
-         - iotop
-         - libjt400-java
-         - linssid
-#         - linux-image-lowlatency
-         - git
-         - mc
-         - neovim
-         - net-tools
-         - openfortivpn
-         - preload
-         - qemu-system-gui
-         - qemu-system-x86
-         - qemu-utils
-         - remmina
-         - rename
-         - seahorse
-         - stacer
-         - synaptic
-         - teamviewer
-         - timeshift
-         - traceroute
-         - usb-creator-gtk
-         - vim-gtk3
-         - virtualbox
-         - whois
-         - xgrep
-         - xmlstarlet
-         - zsh
-    
-    # -----------------------------------
-    - name: dpk-hist-after
-      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_after_{{ plbook }}.txt"
+          - ansible-lint
+          - arp-scan
+          - bpytop
+#          - faketime
+          - freerdp
+          - git
+#          - gitg
+          - grsync
+          - inetutils
+          - iotop
+###          - libjtopen
+#          - linssid
+          - linux-zen
+          - linux-zen-headers
+          - mc
+          - mintstick
+          - mlocate
+          - neovim
+          - net-tools
+          - octopi
+          - oh-my-zsh-git
+          - openfortivpn
+          - partitionmanager
+          - perl-rename
+#         - plasma-wayand-session
+          - remmina
+#         - remmina-plugin-rdesktop
+          - stacer
+          - starship
+          - timeshift
+          - timeshift-autosnap
+          - traceroute
+          - virtualbox
+#          - virtualbox-ext-oracle
+#         - virtualbox-bin-guest-iso
+          - whois
+#          - xgrep
+          - xmlstarlet
+          - zsh
+          - zsh-syntax-highlighting

@@ -4,40 +4,13 @@
     plbook: develop
 
   tasks:
-
-#    - name: xxx key
-#      apt_key:
-#        url: 'xxxurl'
-#        state: latest
-#    - name: xxx repo
-#      apt_repository:
-#        repo: 'xxxrepo'
-#        filename: 'xxxrepo'
-#        state: latest
-
-        # -----------------------------------
-    - name: Update apt-get repo and cache
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
-       
     # -----------------------------------
-    - name: dpk-hist-before
-      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_before_{{ plbook }}.txt"
-
-        # -----------------------------------
     - name: install packages
-      apt:
-        state: latest
+      community.general.pacman:
+        state: present
         name:
-         - code
-         - gambas3
-         - gitg
-
-    # -----------------------------------
-    - name: dpk-hist-after
-      shell: "apt list --installed >dpkg-hist/$(hostname -s)_$(date +%y%m%d-%H%M)_dpkgs_after_{{ plbook }}.txt"
-
-# Install a snap with classic confinement
-    - name: Install "codium" with option --classic
-      community.general.snap:
-        name: codium
-        classic: yes
+#        - code
+          - gambas3-ide
+          - git
+          - gitg
+          - vscodium-bin
