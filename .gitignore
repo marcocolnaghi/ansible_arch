@@ -1,3 +1,4 @@
 .gitignore
-ansible*
+ansible-arch
+ansible_mcolnaghi
 test*
