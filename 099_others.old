@@ -1,0 +1,4 @@
+         - ipscan
+         - megasync
+
+for dwww: sudo a2enmod cgi; systemctl restart apache2

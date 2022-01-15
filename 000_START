@@ -1,2 +1,3 @@
 #!/bin/bash
-apt-get install ansible ansible-lint
+pacman -Syy
+pacman -Su ansible ansible-lint

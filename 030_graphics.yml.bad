@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  vars:
+    plbook: graphics
+
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Print the package facts
+  ansible.builtin.debug:
+    var: ansible_facts.packages
+
+  tasks:
+    # -----------------------------------
+    - name: install packages
+      community.general.pacman:
+        state: present
+        name:
+          - enblend-enfuse
+          - fbida
+          - exiv2
+          - geeqie
+          - gimp
+          - hugin
+          - imagemagick
+          - rawtherapee
