@@ -13,13 +13,13 @@
           - ansible-lint
           - arp-scan
           - bpytop
-#          - faketime
           - freerdp
           - git
-#          - gitg
+          - gitg
           - grsync
           - inetutils
           - iotop
+          - libfaketime
 ###          - libjtopen
 #          - linssid
           - linux-zen
@@ -34,19 +34,15 @@
           - openfortivpn
           - partitionmanager
           - perl-rename
-#         - plasma-wayand-session
           - remmina
-#         - remmina-plugin-rdesktop
           - stacer
           - starship
           - timeshift
           - timeshift-autosnap
           - traceroute
           - virtualbox
-#          - virtualbox-ext-oracle
-#         - virtualbox-bin-guest-iso
+          - virtualbox-host-dkms
           - whois
 #          - xgrep
           - xmlstarlet
           - zsh
-          - zsh-syntax-highlighting
