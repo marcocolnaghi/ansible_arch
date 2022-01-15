@@ -15,8 +15,6 @@
           - cherrytree
           - geeqie
           - google-chrome
-#         - kwalletmanager
-#         - latte-dock
           - libreoffice-still
           - megasync-bin
           - minder
@@ -26,7 +24,7 @@
           - pdftk
           - teams
           - slack-desktop
-#         - thunderbird
+          - thunderbird
           - variety
           - vlc
           - deepin-screenshot
