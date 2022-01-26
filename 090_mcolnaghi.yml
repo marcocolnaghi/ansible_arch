@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  vars:
+    plbook: system
+
+  tasks:
+    # -----------------------------------
+    - name: install packages
+      community.general.pacman:
+      # install_recommends: true
+        state: present
+        name:
+          - amd-ucode
