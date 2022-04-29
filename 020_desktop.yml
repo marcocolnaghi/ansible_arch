@@ -16,11 +16,13 @@
           - geeqie
           - google-chrome
           - libreoffice-still
-          - megasync-bin
+#          - megasync-bin
           - minder
           - nemo
           - nemo-fileroller 
           - nemo-preview
+          - ocrmypdf
+          - pdfarranger
           - pdftk
           - teams
           - slack-desktop

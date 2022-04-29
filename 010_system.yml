@@ -40,6 +40,7 @@
           - timeshift
           - timeshift-autosnap
           - traceroute
+          - trash-cli
           - virtualbox
           - virtualbox-host-dkms
           - whois
